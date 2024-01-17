@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const Login = () => {
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
 
     const onEmailChange = (e) => {
         setUsername(e.target.value);
@@ -25,8 +28,10 @@ const Login = () => {
             console.log('Login Successful. Token:', token);
             setUsername('');
             setPassword('');
+            router.push('/')
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
+            setError('Login failed. Please check your credentials.');
         }
     };
 
@@ -57,7 +62,7 @@ const Login = () => {
                             onChange={onPasswordChange}
                         />
                     </div>
-
+                    {error && <div className="text-red-500">{error}</div>}
                     <div className='w-full'>
                         <button className="w-full bg-blue-500 text-white py-2 px-4 rounded">
                             Login
