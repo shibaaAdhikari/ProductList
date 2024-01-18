@@ -64,7 +64,7 @@ const Login = () => {
                     </div>
                     {error && <div className="text-red-500">{error}</div>}
                     <div className='w-full'>
-                        <button className="w-full bg-blue-500 text-white py-2 px-4 rounded">
+                        <button className="w-full bg-customColor text-white py-2 px-4 rounded">
                             Login
                         </button>
                     </div>
