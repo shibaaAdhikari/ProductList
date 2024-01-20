@@ -8,7 +8,7 @@ const FilterByCategoryComponent = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      await useStore.getState().fetchData(); // Assuming fetchData is part of your store
+      await useStore.getState().fetchData(); 
       const uniqueCategories = Array.from(
         new Set(useStore.getState().data.map((product) => product.category))
       );
