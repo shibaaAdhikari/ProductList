@@ -6,33 +6,37 @@ import FilterByCategoryComponent from "./category";
 import Link from "next/link";
 
 const Card = () => {
-  const { getFilteredProducts } = useStore();
-  const [filteredData, setFilteredData] = useState([]);
+  const store = useStore()
+  const data = store.data;
+  const selectedCategory = store.selectedCategory;
+
+  // const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
-
-  useEffect(() => {
-    const updateFilteredData = () => {
-      const filteredProducts = getFilteredProducts();
-      setFilteredData(filteredProducts);
-    };
-    updateFilteredData();
-    const unsubscribe = useStore.subscribe(
-      updateFilteredData,
-      (state) => state.selectedCategory
-    );
-    return () => unsubscribe();
-  }, [getFilteredProducts]);
+  const filteredProducts = data.filter(el => (el.category === selectedCategory || selectedCategory === null))
+  // ;
+  // useEffect(() => {
+  //   const updateFilteredData = () => {
+  //     // const filteredProducts = getFilteredProducts();
+  //     setFilteredData(filteredProducts);
+  //   };
+  //   updateFilteredData();
+  //   const unsubscribe = useStore.subscribe(
+  //     updateFilteredData,
+  //     (state) => state.selectedCategory
+  //   );
+  //   return () => unsubscribe();
+  // }, []);
 
   const productsPerPage = 10;
-  const pageCount = Math.ceil(filteredData.length / productsPerPage);
+  const pageCount = Math.ceil(filteredProducts.length / productsPerPage);
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
 
   const offset = currentPage * productsPerPage;
-  const currentProducts = filteredData.slice(offset, offset + productsPerPage);
+  const currentProducts = filteredProducts.slice(offset, offset + productsPerPage);
 
   return (
     <div className="flex flex-col flex-wrap justify-center items-center p-5">

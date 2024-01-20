@@ -28,5 +28,25 @@ export const useStore = create((set) => ({
 
     return filteredProducts;
   },
- 
+  getCategoriesData: () => {
+    const { data } = useStore.getState();
+    const categoriesMap = new Map();
+
+    data.forEach((product) => {
+      const category = product.category;
+
+      if (categoriesMap.has(category)) {
+        categoriesMap.set(category, categoriesMap.get(category) + 1);
+      } else {
+        categoriesMap.set(category, 1);
+      }
+    });
+
+    const categoriesData = Array.from(categoriesMap).map(([name, count]) => ({
+      name,
+      count,
+    }));
+
+    return categoriesData;
+  },
 }));

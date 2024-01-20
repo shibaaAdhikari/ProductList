@@ -18,7 +18,7 @@ const ProductDetails = () => {
   const selectedProduct = filteredProducts.find(
     (product) => product.id === parseInt(productId)
   );
-  console.log(selectedProduct)
+ 
 
 
 

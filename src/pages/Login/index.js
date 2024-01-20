@@ -24,10 +24,16 @@ const Login = () => {
 
         try {
             const response = await axios.post('https://dummyjson.com/auth/login', user);
+            console.log('====================================');
+            console.log(response);
+            console.log('====================================');
             const token = response.data.token;
+            const email = response.data.email;
             console.log('Login Successful. Token:', token);
             setUsername('');
             setPassword('');
+            localStorage.setItem("accessToken", token)
+            localStorage.setItem("email", email)
             router.push('/')
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
@@ -37,7 +43,7 @@ const Login = () => {
 
     return (
         <div className='h-screen w-screen flex justify-center items-center bg-slate-100 text-black'>
-            <div className="sm:shadow-xl px-8 pb-8 pt-12 sm:bg-white rounded-xl space-y-12">
+            <main className="sm:shadow-xl px-8 pb-8 pt-12 sm:bg-white rounded-xl space-y-12">
                 <h1 className='font-semibold text-2xl'>Login</h1>
                 <form onSubmit={onSubmit} className='space-y-12 w-full sm:w-[400px]'>
                     <div className='grid w-full items-center gap-1.5'>
@@ -69,7 +75,7 @@ const Login = () => {
                         </button>
                     </div>
                 </form>
-            </div>
+            </main>
         </div>
     );
 };
