@@ -2,6 +2,9 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import Card from '@/Components/card';
+import withAuth from '@/Components/Auth';
+
+
 
 
 const Navbar = dynamic(() => import('@/Components/navbar'));
@@ -9,7 +12,7 @@ const Navbar = dynamic(() => import('@/Components/navbar'));
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
+ function Home() {
   return ( 
     <div >
       <Navbar />
@@ -18,3 +21,5 @@ export default function Home() {
   
   );
 }
+
+export default withAuth(Home)
