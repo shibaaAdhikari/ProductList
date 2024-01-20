@@ -8,10 +8,10 @@ const Navbar = () => {
       <nav className="bg-customColor">
         <div className="container mx-auto flex justify-between items-center bg-vintage p-5 text-white cursor-pointer">
           <div className="mr-4">
-            ProductList
+          <Link href={"/"}  >Product List</Link>
           </div>
           <div className="mr-4">
-          {/* <Link href={"/Piechart"}  >Pie Chart</Link> */}
+          <Link href={"/Piechart"}  >Pie Chart</Link>
           </div>
           <div className="flex items-center">
         {typeof window !== 'undefined' && window.localStorage && localStorage.getItem("email") &&    <h1 className="mr-4">{localStorage.getItem("email")}</h1>}

@@ -38,7 +38,8 @@ const ProductDetails = () => {
             <p> Brand:{selectedProduct.brand}</p>
             
           </div>
-          <button onClick={() => router.back()}>Go back to products</button>
+          <button onClick={() => router.back()} className='text-blue-500 underline'>Go back to products</button>
+
         </div>
       ) : (
         <p className='text-2xl'>Loading...</p>
