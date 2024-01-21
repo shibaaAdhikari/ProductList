@@ -30,7 +30,6 @@ const ProductDetails = () => {
             <img src={selectedProduct.thumbnail} alt={selectedProduct.title} className="w-full mb-4 rounded-lg" />
             <h2 className="text-2xl font-bold mb-2">
               <span className="flex items-center">
-                {/* <FaArrowLeft className="h-6 w-6 mr-2 text-gray-500" /> */}
                 {selectedProduct.title}
               </span>
             </h2>
