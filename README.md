@@ -21,6 +21,10 @@ npm install
 ```
 npm run dev
 ```
+## Login 
+username:kminchelle
+Password:0lelplR
+
 ## Features
 1. User Login
 2.  Product Listing with Pagination
